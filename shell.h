@@ -27,7 +27,8 @@
 #define FSLASH "/"
 #define BUF_SIZE 4096
 /*#define PS1 write(STDOUT_FILENO, "MANDALORIAN$ ", 4)
-#define PS2 write(STDOUT_FILENO, "\nMANDALORIAN$ ", 5)*/
+ *#define PS2 write(STDOUT_FILENO, "\nMANDALORIAN$ ", 5)
+*/
 #define NEWLINE write(STDOUT_FILENO, "\n", 1)
 #define DELIM " \t"
 /* _getline.c */
