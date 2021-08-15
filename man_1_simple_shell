@@ -1,0 +1,28 @@
+.TH man 1 "15/08/21" "1.0" "Simple shell man page"
+.SH NAME
+.B simple shell
+- A basic UNIX command line interpreter.
+.SH SYNOPSIS
+Simple shell can interpret and execute command line arguments read from the standard input.
+.SH DESCRIPTION
+Simple shell is a program that reads line by line from a file or the terminal line. It then interprets the lines and executes it if the line is a valid command. 
+
+.SH USAGE
+All the files are to be compiled on an Ubuntu 20.04 LTS machine with "gcc -Wall -Werror -Wextra -pedantic *.c -o simple_shell".
+
+Once compiled, to start the program, run:
+.br
+$ ./simple_shell
+
+To exit the program, run:
+.br
+simple_shell $ exit
+
+.SH RETURN VALUE
+simple shell will exit with status 0 unless status is specified.
+.SH SEE ALSO
+.I sh(1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+mucha naibei, 
