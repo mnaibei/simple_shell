@@ -25,21 +25,27 @@
 #define NEWLINE write(STDOUT_FILENO, "\n", 1)
 #define DELIM " \t"
 /* _getline.c */
-ssize_t _getline(char **lineptr, size_t *n, int fd, list_t **mt);
-void reset_buffer(char *buffer, ssize_t buf_size);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char *_strdup(char *str, list_t **mt);
-unsigned int _strspn(char *s, char *accept);
-char *_strpbrk(char *s, char *accept);
-char *_strtok(char *s, const char *delim);
-unsigned int _strlen(char *s);
+/*
+ *ssize_t _getline(char **lineptr, size_t *n, int fd, list_t **mt);
+ *void reset_buffer(char *buffer, ssize_t buf_size);
+ *void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+ *char *_strdup(char *str, list_t **mt);
+ *unsigned int _strspn(char *s, char *accept);
+ *char *_strpbrk(char *s, char *accept);
+ *char *_strtok(char *s, const char *delim);
+ *unsigned int _strlen(char *s);
+ */
 /* string02.c */
-int _strcmp(char *s1, char *s2);
-int _atoi(char *s);
-char *_strcat(char *s1, char *s2, list_t **mt);
-char *_itoa(ssize_t num, list_t **mt);
-char *reverse_str(char *s);
+/*
+ *int _strcmp(char *s1, char *s2);
+ *int _atoi(char *s);
+ *char *_strcat(char *s1, char *s2, list_t **mt);
+ *char *_itoa(ssize_t num, list_t **mt);
+ *char *reverse_str(char *s);
+ */
 /* string03.c */
-char *_strchr(char *s, char c);
-void _chartostr(char *s, char c);
+/*
+ *char *_strchr(char *s, char c);
+ *void _chartostr(char *s, char c);
+ */
 #endif /* _SHELL_H_ */

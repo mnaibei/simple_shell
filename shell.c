@@ -197,7 +197,7 @@ char **lsh_split_line(char *line)
 		fprintf(stderr, "lsh: allocation error\n");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(line, LSH_TOK_DELIM);
+	token = strtoq(line, LSH_TOK_DELIM);
 	while (token != NULL)
 	{
 		tokens[position] = token;
@@ -212,7 +212,7 @@ char **lsh_split_line(char *line)
 				exit(EXIT_FAILURE);
 			}
 		}
-		token = strtok(NULL, LSH_TOK_DELIM);
+		token = strtoq(NULL, LSH_TOK_DELIM);
 	}
 	tokens[position] = NULL;
 	return (tokens);
