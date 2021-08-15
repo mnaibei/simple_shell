@@ -24,7 +24,7 @@ int (*builtin_func[]) (char **) = {
 
 int lsh_num_builtins(void)
 {
-	return (sizeof(builtin_str) / sizeof(char *);
+	return (sizeof(builtin_str) / sizeof(char *));
 }
 
 /*
