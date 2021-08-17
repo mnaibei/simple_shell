@@ -57,7 +57,7 @@ int sh_cd(char **args)
 int sh_help(char **args)
 {
 	int i;
-  
+	
 	printf("Mucha and Moreen Simple Shell\n");
 	printf("Type program names and arguments, and hit enter.\n");
 	printf("The following are built in:\n");
@@ -90,8 +90,9 @@ int sh_launch(char **args)
 {
 	pid_t pid, wpid;
 	int status;
+	
 	pid = fork();
-    
+	
 	if (pid == 0)
 	{
     /* Child process*/
@@ -104,9 +105,10 @@ int sh_launch(char **args)
 	{
     /* Error forking*/
 		perror("sh");
-	} else{
+	} else
+	{
     /*Parent process*/
-    do{
+	do {
 	    wpid = waitpid(pid, &status, WUNTRACED);
     } while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
@@ -153,10 +155,10 @@ char *sh_read_line(void)
 
 	if (!buffer)
 	{
-		fprintf (stderr, "Error\n");
-		exit (EXIT_FAILURE);
+		fprintf(stderr, "Error\n");
+		exit(EXIT_FAILURE);
 	}
-	while(1)
+	while (1)
     {
         /*read a char*/
         c = getchar();
@@ -165,7 +167,7 @@ char *sh_read_line(void)
         {
 		buffer[position] = '\0';
 		return (buffer);
-	}else
+	} else
 	{
 		buffer[position] = c;
 	}
@@ -203,7 +205,7 @@ char **sh_split_line(char *line)
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(line, LSH_TOK_DELIM);
-	while (token != NULL) 
+	while (token != NULL)
 	{
 		tokens[position] = token;
 		position++;
@@ -221,22 +223,20 @@ char **sh_split_line(char *line)
 		token = strtok(NULL, LSH_TOK_DELIM);
 	}
 	tokens[position] = NULL;
-	return (tokens)
+	return (tokens);
 		}
 
 void loop(void)
 {
 	char *line;
 	char **args;
-	int status;
-    
+	int status;  
     /*
     *read cmd entered by user
     *parse cmd to understand cmd and arg
     *exec cmd
     */
-
-	do{
+	do {
 		printf("Bigus_Dickus@root$~");
 		line = sh_read_line();
 /*args is array of strings*/
