@@ -54,10 +54,10 @@ int sh_cd(char **args)
    *@param args List of args.  Not examined.
    *@return Always returns 1, to continue executing.
  */
-int sh_help(char **args)
+int sh_help(char __attribute__ ((unused))**args)
 {
 	int i;
-	
+
 	printf("Mucha and Moreen Simple Shell\n");
 	printf("Type program names and arguments, and hit enter.\n");
 	printf("The following are built in:\n");
@@ -66,7 +66,6 @@ int sh_help(char **args)
 	{
 		printf("  %s\n", builtin_str[i]);
 	}
-
 	printf("Use the man command for information on other programs.\n");
 	return (1);
 }
@@ -76,7 +75,7 @@ int sh_help(char **args)
    *@param args List of args.  Not examined.
    *@return Always returns 0, to terminate execution.
  */
-int sh_exit(char **args)
+int sh_exit(char __attribute__ ((unused))**args)
 {
 	return (0);
 }
@@ -88,14 +87,14 @@ int sh_exit(char **args)
  */
 int sh_launch(char **args)
 {
-	pid_t pid, wpid;
+	pid_t pid, __attribute__ ((unused))wpid;
 	int status;
-	
+
 	pid = fork();
-	
+
 	if (pid == 0)
 	{
-    /* Child process*/
+	  /* Child process*/
 		if (execvp(args[0], args) == -1)
 		{
 			perror("sh");
@@ -107,10 +106,10 @@ int sh_launch(char **args)
 		perror("sh");
 	} else
 	{
-    /*Parent process*/
+		/*Parent process*/
 	do {
-	    wpid = waitpid(pid, &status, WUNTRACED);
-    } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		wpid = waitpid(pid, &status, WUNTRACED);
+	} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 
 	return (1);
@@ -159,35 +158,33 @@ char *sh_read_line(void)
 		exit(EXIT_FAILURE);
 	}
 	while (1)
-    {
-        /*read a char*/
-        c = getchar();
-        /*replace EOF with NULL and return*/
-        if (c == EOF || c == '\n')
-        {
-		buffer[position] = '\0';
-		return (buffer);
-	} else
 	{
-		buffer[position] = c;
-	}
-	position++;
-
-        /*if size exceeded buffer reallocated*/
-	if (position >= bufsize)
-	{
-		bufsize += LSH_RL_BUFSIZE;
-		buffer = realloc(buffer, bufsize);
-		if (!buffer)
+/*read a char*/
+		c = getchar();
+/*replace EOF with NULL and return*/
+		if (c == EOF || c == '\n')
 		{
-			fprintf(stderr, "lsh: allocation error\n");
-			exit(EXIT_FAILURE);
+			buffer[position] = '\0';
+			return (buffer);
+		} else
+		{
+			buffer[position] = c;
+			/*return (buffer);*/
+		}
+		position++;
+/*if size exceeded buffer reallocated*/
+		if (position >= bufsize)
+		{
+			bufsize += LSH_RL_BUFSIZE;
+			buffer = realloc(buffer, bufsize);
+			if (!buffer)
+			{
+				fprintf(stderr, "lsh: allocation error\n");
+				exit(EXIT_FAILURE);
+			}
 		}
 	}
-    }
 }
-
-
 /*
    *@brief Split a line into tokens (very naively).
    *@param line The line.
@@ -230,24 +227,24 @@ void loop(void)
 {
 	char *line;
 	char **args;
-	int status;  
-    /*
-    *read cmd entered by user
-    *parse cmd to understand cmd and arg
-    *exec cmd
-    */
+	int status;
+/*
+ *read cmd entered by user
+ *parse cmd to understand cmd and arg
+ *exec cmd
+ */
 	do {
 		printf("Bigus_Dickus@root$~");
 		line = sh_read_line();
 /*args is array of strings*/
 		args =  sh_split_line(line);
 		status = sh_execute(args);
-        /*freeing memory*/
+/*freeing memory*/
 		free(line);
 		free(args);
 	} while (status);
 }
-int main(int argc, char **argv)
+int main(__attribute__ ((unused))int argc, __attribute__ ((unused))char **argv)
 {
     /* code */
     /*load config files*/

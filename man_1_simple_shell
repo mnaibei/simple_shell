@@ -8,15 +8,15 @@ Simple shell can interpret and execute command line arguments read from the stan
 Simple shell is a program that reads line by line from a file or the terminal line. It then interprets the lines and executes it if the line is a valid command. 
 
 .SH USAGE
-All the files are to be compiled on an Ubuntu 20.04 LTS machine with "gcc -Wall -Werror -Wextra -pedantic *.c -o simple_shell".
+All the files are to be compiled on an Ubuntu 20.04 LTS machine with "gcc -Wall -Werror -Wextra -pedantic *.c -o hsh".
 
 Once compiled, to start the program, run:
 .br
-$ ./simple_shell
+$ ./hsh
 
 To exit the program, run:
 .br
-simple_shell $ exit
+hsh $ exit
 
 .SH RETURN VALUE
 simple shell will exit with status 0 unless status is specified.
@@ -25,4 +25,4 @@ simple shell will exit with status 0 unless status is specified.
 .SH BUGS
 No known bugs.
 .SH AUTHOR
-mucha naibei, 
+Mucha Naibei, Moreen Nyaga.
