@@ -58,7 +58,7 @@ for (j = 0; j < len; j++)
 if (environ[i][j] != str[j])
 break;
 }
-if (j == len && environ[i][j] == '=)
+if (j == len && environ[i][j] == '=')
 return (i);
 }
 return (-1);
@@ -83,7 +83,7 @@ int len;
 
 len = str_len(str);
 token_count = 0;
-/*Moving the pointer len of str plus = sign*/
+/* Moving the pointer len of str plus = sign */
 env_var = environ[index] + (len + 1);
 path_tokens = token_interface(env_var, delim, token_count);
 if (path_tokens == NULL)
@@ -175,3 +175,4 @@ built[i] = command[j];
 built[--i] = '\0';
 return (built);
 }
+
