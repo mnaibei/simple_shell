@@ -1,13 +1,13 @@
-#include "test.h"
+#include "shell.h"
 
-/*
+/**
  *Function Declarations for builtin shell commands:
  */
 int sh_cd(char **args);
 int sh_help(char **args);
 int sh_exit(char **args);
 
-/*
+/**
  *List of builtin commands, followed by their corresponding functions.
  */
 char *builtin_str[] = {
@@ -25,11 +25,11 @@ int lsh_num_builtins(void)
 {
 	return (sizeof(builtin_str) / sizeof(char *));
 }
-/*
+/**
  *Builtin function implementations.
  */
 
-/*
+/**
  *@brief Bultin command: change directory.
  *@param args List of args.  args[0] is "cd".  args[1] is the directory.
  *@return Always returns 1, to continue executing.
@@ -49,7 +49,7 @@ int sh_cd(char **args)
 	return (1);
 }
 
-/*
+/**
  *@brief Builtin command: print help.
  *@param args List of args.  Not examined.
  *@return Always returns 1, to continue executing.
@@ -70,7 +70,7 @@ int sh_help(char __attribute__ ((unused))**args)
 	return (1);
 }
 
-/*
+/**
  *@brief Builtin command: exit.
  *@param args List of args.  Not examined.
  *@return Always returns 0, to terminate execution.
@@ -80,7 +80,7 @@ int sh_exit(char __attribute__ ((unused))**args)
 	return (0);
 }
 
-/*
+/**
  *@brief Launch a program and wait for it to terminate.
  *@param args Null terminated list of arguments (including program).
  *@return Always returns 1, to continue execution.
@@ -115,7 +115,7 @@ int sh_launch(char **args)
 	return (1);
 }
 
-/*
+/**
  *@brief Execute shell built-in or launch program.
  *@param args Null terminated list of arguments.
  *@return 1 if the shell should continue running, 0 if it should terminate
@@ -141,7 +141,7 @@ int sh_execute(char **args)
 	return (sh_launch(args));
 }
 
-/*
+/**
  *@brief Read a line of input from stdin.
  *@return The line from stdin.
  */
@@ -182,7 +182,7 @@ char *sh_read_line(void)
 		}
 	}
 }
-/*
+/**
  *@brief Split a line into tokens (very naively).
  *@param line The line.
  *@return Null-terminated array of tokens.
@@ -225,10 +225,10 @@ void loop(void)
 	char *line;
 	char **args;
 	int status;
-/*
- *read cmd entered by user
- *parse cmd to understand cmd and arg
- *exec cmd
+/**
+ *@read cmd entered by user
+ *@parse cmd to understand cmd and arg
+ *@exec cmd
  */
 	do {
 		printf("Bigus_Dickus@root$~");
