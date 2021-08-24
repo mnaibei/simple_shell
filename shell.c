@@ -26,13 +26,13 @@ int lsh_num_builtins(void)
 	return (sizeof(builtin_str) / sizeof(char *));
 }
 /*
-  *Builtin function implementations.
-*/
+ *Builtin function implementations.
+ */
 
 /*
-  * @brief Bultin command: change directory.
-   *@param args List of args.  args[0] is "cd".  args[1] is the directory.
-   *@return Always returns 1, to continue executing.
+ *@brief Bultin command: change directory.
+ *@param args List of args.  args[0] is "cd".  args[1] is the directory.
+ *@return Always returns 1, to continue executing.
  */
 int sh_cd(char **args)
 {
@@ -50,9 +50,9 @@ int sh_cd(char **args)
 }
 
 /*
-  * @brief Builtin command: print help.
-   *@param args List of args.  Not examined.
-   *@return Always returns 1, to continue executing.
+ *@brief Builtin command: print help.
+ *@param args List of args.  Not examined.
+ *@return Always returns 1, to continue executing.
  */
 int sh_help(char __attribute__ ((unused))**args)
 {
@@ -71,9 +71,9 @@ int sh_help(char __attribute__ ((unused))**args)
 }
 
 /*
-  * @brief Builtin command: exit.
-   *@param args List of args.  Not examined.
-   *@return Always returns 0, to terminate execution.
+ *@brief Builtin command: exit.
+ *@param args List of args.  Not examined.
+ *@return Always returns 0, to terminate execution.
  */
 int sh_exit(char __attribute__ ((unused))**args)
 {
@@ -81,9 +81,9 @@ int sh_exit(char __attribute__ ((unused))**args)
 }
 
 /*
-  *@brief Launch a program and wait for it to terminate.
-  *@param args Null terminated list of arguments (including program).
-  *@return Always returns 1, to continue execution.
+ *@brief Launch a program and wait for it to terminate.
+ *@param args Null terminated list of arguments (including program).
+ *@return Always returns 1, to continue execution.
  */
 int sh_launch(char **args)
 {
@@ -94,7 +94,7 @@ int sh_launch(char **args)
 
 	if (pid == 0)
 	{
-	  /* Child process*/
+		/*Child process*/
 		if (execvp(args[0], args) == -1)
 		{
 			perror("sh");
@@ -102,7 +102,7 @@ int sh_launch(char **args)
 		exit(EXIT_FAILURE);
 	} else if (pid < 0)
 	{
-    /* Error forking*/
+		/*Error forking*/
 		perror("sh");
 	} else
 	{
@@ -116,9 +116,9 @@ int sh_launch(char **args)
 }
 
 /*
-  * @brief Execute shell built-in or launch program.
-   *@param args Null terminated list of arguments.
-   *@return 1 if the shell should continue running, 0 if it should terminate
+ *@brief Execute shell built-in or launch program.
+ *@param args Null terminated list of arguments.
+ *@return 1 if the shell should continue running, 0 if it should terminate
  */
 int sh_execute(char **args)
 {
@@ -126,7 +126,7 @@ int sh_execute(char **args)
 
 	if (args[0] == NULL)
 	{
-    /*An empty command was entered.*/
+		/*An empty command was entered.*/
 		return (1);
 	}
 
@@ -142,8 +142,8 @@ int sh_execute(char **args)
 }
 
 /*
-  * @brief Read a line of input from stdin.
-   *@return The line from stdin.
+ *@brief Read a line of input from stdin.
+ *@return The line from stdin.
  */
 char *sh_read_line(void)
 {
@@ -166,11 +166,8 @@ char *sh_read_line(void)
 		{
 			buffer[position] = '\0';
 			return (buffer);
-		} else
-		{
-			buffer[position] = c;
-			/*return (buffer);*/
 		}
+		buffer[position] = c;
 		position++;
 /*if size exceeded buffer reallocated*/
 		if (position >= bufsize)
@@ -186,9 +183,9 @@ char *sh_read_line(void)
 	}
 }
 /*
-   *@brief Split a line into tokens (very naively).
-   *@param line The line.
-   *@return Null-terminated array of tokens.
+ *@brief Split a line into tokens (very naively).
+ *@param line The line.
+ *@return Null-terminated array of tokens.
  */
 char **sh_split_line(char *line)
 {
@@ -246,10 +243,10 @@ void loop(void)
 }
 int main(__attribute__ ((unused))int argc, __attribute__ ((unused))char **argv)
 {
-    /* code */
-    /*load config files*/
-    /*run Read Eval Print(REPL) loop*/
+	/*code*/
+	/*load config files*/
+	/*run Read Eval Print(REPL) loop*/
 	loop();
-    /*perform shutdown cleanup(free mem)*/
+	/*perform shutdown cleanup(free mem)*/
 	return (EXIT_SUCCESS);
 }

@@ -10,7 +10,8 @@ int i;
 
 if (str == NULL)
 return (0);
-for (i = 0; str[i] != '\0'; i++)   ;
+for (i = 0; str[i] != '\0'; i++)
+;
 return (i);
 }
 
