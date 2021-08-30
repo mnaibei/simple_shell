@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- *@Function Declarations for builtin shell commands:
+ *@function Declarations for builtin shell commands:
  *@sh_cd: returns cd command
  *@sh_help: returns help command
  *@sh_exit: returns exit command
@@ -34,9 +34,9 @@ int lsh_num_builtins(void)
  */
 
 /**
- *@brief: Bultin command: change directory.
- *@param: args List of args.  
- *@args[0]: is "cd".  
+ *@sh_cd: Bultin command: change directory.
+ *@param: args List of args.
+ *@args[0]: is "cd".
  *@args[1]: is the directory.
  *@return: Always returns 1, to continue executing.
  */
@@ -56,7 +56,7 @@ int sh_cd(char **args)
 }
 
 /**
- *@param: args List of args.  Not examined.
+ *@args: args List of args.  Not examined.
  *@sh_help: returns builtin help command
  *@return: Always returns 1, to continue executing.
  */
