@@ -1,7 +1,6 @@
 #include "shell.h"
 
 /**
- *@function Declarations for builtin shell commands:
  *@sh_cd: returns cd command
  *@sh_help: returns help command
  *@sh_exit: returns exit command
@@ -11,7 +10,7 @@ int sh_help(char **args);
 int sh_exit(char **args);
 
 /**
- *builtin of builtin commands, followed by their corresponding functions.
+ *@builtin: builtin commands, followed by their corresponding functions.
  *@builtin_str: pointer to builtin commands
  */
 char *builtin_str[] = {
@@ -35,7 +34,6 @@ int lsh_num_builtins(void)
 
 /**
  *@sh_cd: Bultin command: change directory.
- *@param: args List of args.
  *@args[0]: is "cd".
  *@args[1]: is the directory.
  *@return: Always returns 1, to continue executing.
@@ -232,9 +230,10 @@ void loop(void)
 	char **args;
 	int status;
 /**
- *@read: cmd entered by user
- *@parse: cmd to understand cmd and arg
+ *@line: cmd enterd by user
+ *@args: cmd to understand cmd and arg
  *@exec: cmd
+ *@return: SUCCESS
  */
 	do {
 		printf("Bigus_Dickus@root$~");
