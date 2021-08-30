@@ -1,14 +1,17 @@
 #include "shell.h"
 
 /**
- *Function Declarations for builtin shell commands:
+ *@Function Declarations for builtin shell commands:
+ *@sh_cd : returns cd command
+ *@sh_help : returns help command
+ *@sh_exit : returns exit command
  */
 int sh_cd(char **args);
 int sh_help(char **args);
 int sh_exit(char **args);
 
 /**
- *List of builtin commands, followed by their corresponding functions.
+ *@builtin of builtin commands, followed by their corresponding functions.
  */
 char *builtin_str[] = {
 	"cd",
@@ -26,12 +29,14 @@ int lsh_num_builtins(void)
 	return (sizeof(builtin_str) / sizeof(char *));
 }
 /**
- *Builtin function implementations.
+ *@builtin function implementations.
  */
 
 /**
  *@brief Bultin command: change directory.
- *@param args List of args.  args[0] is "cd".  args[1] is the directory.
+ *@param args List of args.  
+ *@args[0] is "cd".  
+ *@args[1] is the directory.
  *@return Always returns 1, to continue executing.
  */
 int sh_cd(char **args)
@@ -50,8 +55,8 @@ int sh_cd(char **args)
 }
 
 /**
- *@brief Builtin command: print help.
  *@param args List of args.  Not examined.
+ *@sh_help returns builtin help command
  *@return Always returns 1, to continue executing.
  */
 int sh_help(char __attribute__ ((unused))**args)
@@ -71,8 +76,8 @@ int sh_help(char __attribute__ ((unused))**args)
 }
 
 /**
- *@brief Builtin command: exit.
- *@param args List of args.  Not examined.
+ *@sh_exit command: exit.
+ *@param args List of args.
  *@return Always returns 0, to terminate execution.
  */
 int sh_exit(char __attribute__ ((unused))**args)
@@ -81,7 +86,7 @@ int sh_exit(char __attribute__ ((unused))**args)
 }
 
 /**
- *@brief Launch a program and wait for it to terminate.
+ *@sh_launch Launch a program and wait for it to terminate.
  *@param args Null terminated list of arguments (including program).
  *@return Always returns 1, to continue execution.
  */
@@ -116,7 +121,7 @@ int sh_launch(char **args)
 }
 
 /**
- *@brief Execute shell built-in or launch program.
+ *@sh_execute Execute shell built-in or launch program.
  *@param args Null terminated list of arguments.
  *@return 1 if the shell should continue running, 0 if it should terminate
  */
@@ -142,7 +147,7 @@ int sh_execute(char **args)
 }
 
 /**
- *@brief Read a line of input from stdin.
+ *@sh_read_line read a line of input from stdin.
  *@return The line from stdin.
  */
 char *sh_read_line(void)
@@ -183,7 +188,7 @@ char *sh_read_line(void)
 	}
 }
 /**
- *@brief Split a line into tokens (very naively).
+ *@sh_split_line split a line into tokens.
  *@param line The line.
  *@return Null-terminated array of tokens.
  */
